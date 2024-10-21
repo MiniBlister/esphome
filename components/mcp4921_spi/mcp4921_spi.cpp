@@ -23,7 +23,6 @@ void MCP4921SPI::loop() {
 
 void MCP4921SPI::dump_config(){
     ESP_LOGCONFIG(TAG, "Empty SPI sensor");
-    MCP4921SPI::dump_config();
 }
 
 }  // namespace mcp4921_spi
