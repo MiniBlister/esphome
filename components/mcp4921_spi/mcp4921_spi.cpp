@@ -10,7 +10,6 @@ void MCP4921SPI::setup() {
     ESP_LOGI(TAG, "MCP4921SPI setup started!");
     this->spi_setup();
     ESP_LOGI(TAG, "SPI setup finished!");
-    MCP4921SPI::setup();
 }
 
 void MCP4921SPI::update() {
