@@ -21,7 +21,7 @@ CONFIG_SCHEMA = cv.Schema({
 
 
 # Code-Generierung
-def to_code(config):
+async def to_code(config):
     var = cg.new_Pvariable(config[CONF_ID])
     cg.add(var.set_min_value(config[CONF_MIN_VALUE]))
     cg.add(var.set_max_value(config[CONF_MAX_VALUE]))
@@ -29,6 +29,7 @@ def to_code(config):
 
     # SPI Konfiguration
     cg.add(var.set_spi_pins())
-    cg.register_component(var, config)
-    number.register_number(var, config)
+    # SPI Konfiguration
+    await cg.register_component(var, config)  # await hinzufügen
+    await number.register_number(var, config)  # await für die Registrierung von number
 
