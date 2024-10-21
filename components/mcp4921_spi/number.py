@@ -14,8 +14,8 @@ MCP4921SPIComponent = mcp4921_spi_ns.class_(
 # Konfigurationsschema
 CONFIG_SCHEMA = cv.Schema({
     cv.GenerateID(): cv.declare_id(MCP4921SPIComponent),
-    cv.Required(CONF_MIN_VALUE, default=0): cv.float_,   # Minimum für den DAC-Wert
-    cv.Required(CONF_MAX_VALUE, default=4095): cv.float_, # Maximum für den DAC-Wert
+    cv.Optional(CONF_MIN_VALUE, default=0): cv.float_,   # Minimum für den DAC-Wert
+    cv.Optional(CONF_MAX_VALUE, default=4095): cv.float_, # Maximum für den DAC-Wert
     cv.Optional(CONF_STEP, default=1): cv.float_,        # Schrittweite für die Anpassung
 }).extend(cv.COMPONENT_SCHEMA).extend(spi.SPI_DEVICE_SCHEMA)
 
@@ -32,4 +32,3 @@ def to_code(config):
     cg.register_component(var, config)
     number.register_number(var, config)
 
-    
