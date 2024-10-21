@@ -30,6 +30,7 @@ class MCP4921SPI : public sensor::Sensor,
 
   void on_enable() override {
     this->set_traits();  // Set traits when enabled
+    
   }
 
 };
