@@ -8,7 +8,7 @@ from esphome.const import (
 )
 
 # Import number modes (AUTO, SLIDER, BOX, etc.)
-NumberMode = number.number.NumberMode
+NumberMode = number.NumberMode
 
 
 DEPENDENCIES = ["spi"]
