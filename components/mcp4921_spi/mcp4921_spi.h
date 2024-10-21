@@ -8,19 +8,16 @@ namespace esphome {
 namespace mcp4921_spi {
 
 class MCP4921SPI : public number::Number,
-                       public spi::SPIDevice<spi::BIT_ORDER_MSB_FIRST, spi::CLOCK_POLARITY_LOW, spi::CLOCK_PHASE_LEADING,
-                                            spi::DATA_RATE_1KHZ> {
+                   public spi::SPIDevice<spi::BIT_ORDER_MSB_FIRST, spi::CLOCK_POLARITY_LOW, spi::CLOCK_PHASE_LEADING,
+                                        spi::DATA_RATE_1KHZ> {
  public:
   void setup() override;  // Nur Deklaration hier
-  void write_value(float value);
   void dump_config() override;
-
- protected:
   void on_value(float value) override;
 
- private:
-  void set_traits();  // Nur Deklaration hier
-
+ protected:
+  void write_value(float value); // Methode zum Schreiben des Wertes an den DAC
+  void set_traits();  // Setze die Traits für die Number-Komponente
 };
 
 }  // namespace mcp4921_spi
