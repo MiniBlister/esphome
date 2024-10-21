@@ -17,7 +17,7 @@ class MCP4921SPI : public sensor::Sensor,
   void loop() override;
   void dump_config() override;
 
-
+  protected:
   // Traits for the number component
   void set_traits() {
     this->traits.set_min_value(0.0f);
