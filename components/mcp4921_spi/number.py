@@ -1,7 +1,8 @@
+# mcp4921_spi
 import esphome.codegen as cg
 import esphome.config_validation as cv
 from esphome.components import spi, number
-from esphome.const import CONF_ID, CONF_MIN_VALUE, CONF_MAX_VALUE, CONF_STEP
+from esphome.const import CONF_ID, CONF_MIN_VALUE, CONF_MAX_VALUE, CONF_STEP, CONF_NAME
 
 DEPENDENCIES = ["spi"]
 # Definiere ein Namespace für die MCP4921-Komponente
