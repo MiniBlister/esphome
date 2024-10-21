@@ -7,6 +7,10 @@ from esphome.const import (
     CONF_MODE, CONF_DISABLED_BY_DEFAULT, CONF_DEVICE_CLASS, CONF_UNIT_OF_MEASUREMENT
 )
 
+# Import number modes (AUTO, SLIDER, BOX, etc.)
+NumberMode = number.number.NumberMode
+
+
 DEPENDENCIES = ["spi"]
 # Definiere ein Namespace für die MCP4921-Komponente
 
