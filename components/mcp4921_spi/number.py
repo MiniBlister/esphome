@@ -2,7 +2,7 @@
 import esphome.codegen as cg
 import esphome.config_validation as cv
 from esphome.components import spi, number
-from esphome.const import CONF_ID, CONF_MIN_VALUE, CONF_MAX_VALUE, CONF_STEP, CONF_NAME
+from esphome.const import CONF_ID, CONF_MIN_VALUE, CONF_MAX_VALUE, CONF_STEP, CONF_NAME, CONF_DISABLED_BY_DEFAULT
 
 DEPENDENCIES = ["spi"]
 # Definiere ein Namespace für die MCP4921-Komponente
@@ -19,6 +19,7 @@ CONFIG_SCHEMA = cv.Schema({
     cv.Optional(CONF_MIN_VALUE, default=0): cv.float_,   # Minimum für den DAC-Wert
     cv.Optional(CONF_MAX_VALUE, default=4095): cv.float_, # Maximum für den DAC-Wert
     cv.Optional(CONF_STEP, default=1): cv.float_,        # Schrittweite für die Anpassung
+     cv.Optional(CONF_DISABLED_BY_DEFAULT, default=False): cv.boolean,  # Optional, default is False
 }).extend(cv.COMPONENT_SCHEMA).extend(spi.spi_device_schema()) 
 
 
@@ -28,6 +29,11 @@ async def to_code(config):  # async Funktion verwenden
     cg.add(var.set_min_value(config[CONF_MIN_VALUE]))
     cg.add(var.set_max_value(config[CONF_MAX_VALUE]))
     cg.add(var.set_step(config[CONF_STEP]))
+
+
+    # Handle disabled_by_default if present
+    if CONF_DISABLED_BY_DEFAULT in config:
+        cg.add(var.set_disabled_by_default(config[CONF_DISABLED_BY_DEFAULT]))
 
     # SPI Konfiguration
     await cg.register_component(var, config)  # await hinzufügen
