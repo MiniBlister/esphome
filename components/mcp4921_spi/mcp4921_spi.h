@@ -16,6 +16,22 @@ class MCP4921SPI : public sensor::Sensor,
   void update() override;
   void loop() override;
   void dump_config() override;
+
+
+  // Traits for the number component
+  void set_traits() {
+    this->traits.set_min_value(0.0f);
+    this->traits.set_max_value(4095.0f);
+    this->traits.set_step(1.0f);
+    this->traits.set_mode(number::NUMBER_MODE_SLIDER);  // Set default mode
+    this->traits.set_unit_of_measurement("V");  // Set unit
+    this->traits.set_device_class("voltage");  // Set device class
+  }
+
+  void on_enable() override {
+    this->set_traits();  // Set traits when enabled
+  }
+
 };
 
 }  // namespace mcp4921_spi
