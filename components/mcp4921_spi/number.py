@@ -20,16 +20,19 @@ CONFIG_SCHEMA = cv.Schema({
 }).extend(cv.COMPONENT_SCHEMA).extend(spi.spi_device_schema()) 
 
 
-# Code-Generierung
-async def to_code(config):
+async def to_code(config):  # async Funktion verwenden
     var = cg.new_Pvariable(config[CONF_ID])
     cg.add(var.set_min_value(config[CONF_MIN_VALUE]))
     cg.add(var.set_max_value(config[CONF_MAX_VALUE]))
     cg.add(var.set_step(config[CONF_STEP]))
 
     # SPI Konfiguration
-    cg.add(var.set_spi_pins())
-    # SPI Konfiguration
     await cg.register_component(var, config)  # await hinzufügen
-    await number.register_number(var, config)  # await für die Registrierung von number
+    await number.register_number(
+        var, 
+        config, 
+        min_value=config[CONF_MIN_VALUE], 
+        max_value=config[CONF_MAX_VALUE], 
+        step=config[CONF_STEP]
+    )
 
