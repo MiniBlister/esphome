@@ -33,3 +33,7 @@ async def to_code(config):
     # Set min and max values
     cg.add(var.set_min_value(config['min_value']))
     cg.add(var.set_max_value(config['max_value']))
+
+        # Set the SPI device
+    cg.add(var.set_spi_device(config['spi_id']))
+    
