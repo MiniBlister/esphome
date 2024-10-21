@@ -17,7 +17,7 @@ CONFIG_SCHEMA = cv.Schema({
     cv.Optional(CONF_MIN_VALUE, default=0): cv.float_,   # Minimum für den DAC-Wert
     cv.Optional(CONF_MAX_VALUE, default=4095): cv.float_, # Maximum für den DAC-Wert
     cv.Optional(CONF_STEP, default=1): cv.float_,        # Schrittweite für die Anpassung
-}).extend(cv.COMPONENT_SCHEMA).extend(spi.SPI_DEVICE_SCHEMA)
+}).extend(cv.COMPONENT_SCHEMA).extend(spi.spi_device_schema()) 
 
 
 # Code-Generierung
