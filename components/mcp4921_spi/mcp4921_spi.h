@@ -7,8 +7,7 @@
 namespace esphome {
 namespace mcp4921_spi {
 
-class MCP4921SPI : public sensor::Sensor,
-                       public PollingComponent,
+class MCP4921SPI : public number::Number,
                        public spi::SPIDevice<spi::BIT_ORDER_MSB_FIRST, spi::CLOCK_POLARITY_LOW, spi::CLOCK_PHASE_LEADING,
                                             spi::DATA_RATE_1KHZ> {
  public:
